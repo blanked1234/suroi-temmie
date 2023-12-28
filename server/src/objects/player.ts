@@ -333,25 +333,28 @@ export class Player extends GameObject<ObjectCategory.Player> {
 
         this.hitbox = new CircleHitbox(GameConstants.player.radius, position);
 
+        this.inventory.addOrReplaceWeapon(0, "barrett");
+        (this.inventory.getWeapon(0) as GunItem).ammo = Infinity;
         this.inventory.addOrReplaceWeapon(2, "fists");
-
-        this.inventory.scope = "1x_scope";
-        // this.inventory.items["15x_scope"] = 1;
-        // this.inventory.scope = "15x_scope";
+        this.inventory.items["15x_scope"] = 1;
+        this.inventory.scope = "15x_scope";
 
         // Inventory preset
         if (this.isDev && userData.lobbyClearing && !Config.disableLobbyClearing) {
-            this.inventory.addOrReplaceWeapon(0, "deathray");
-            (this.inventory.getWeapon(0) as GunItem).ammo = 1;
+            this.inventory.addOrReplaceWeapon(0, "barrett");
+            (this.inventory.getWeapon(0) as GunItem).ammo = Infinity;
+            this.inventory.items["127mm"] = 90;
 
-            this.inventory.addOrReplaceWeapon(1, "revitalizer");
+            this.inventory.addOrReplaceWeapon(1, "tango_51");
             (this.inventory.getWeapon(1) as GunItem).ammo = 5;
-            this.inventory.items["12g"] = 15;
+            this.inventory.items["762mm"] = 90;
 
             this.inventory.addOrReplaceWeapon(2, "heap_sword");
 
             this.inventory.items["2x_scope"] = 1;
             this.inventory.items["4x_scope"] = 1;
+            this.inventory.items["15x_scope"] = 1;
+            this.inventory.scope = "15x_scope";
             this.inventory.scope = "4x_scope";
         }
 

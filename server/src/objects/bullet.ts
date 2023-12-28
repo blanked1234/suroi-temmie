@@ -97,7 +97,9 @@ export class Bullet extends BaseBullet {
                     position: collision.intersection.point
                 });
 
-                if (this.definition.penetration?.players) continue;
+                if (this.definition.penetration?.players){
+                    continue;
+                }
                 this.dead = true;
                 break;
             }
@@ -112,7 +114,10 @@ export class Bullet extends BaseBullet {
                     position: collision.intersection.point
                 });
 
-                if (this.definition.penetration?.obstacles && !object.definition.impenetrable) continue;
+                if (this.definition.penetration?.obstacles && !object.definition.impenetrable && this.reflectionCount<3){
+                    this.reflectionCount=this.reflectionCount+3;
+                    continue;
+                }
 
                 // skip killing the bullet for obstacles with noCollisions like bushes
                 if (!object.definition.noCollisions) {
@@ -134,6 +139,24 @@ export class Bullet extends BaseBullet {
 
     reflect(normal: Vector): void {
         const rotation = 2 * Math.atan2(normal.y, normal.x) - this.rotation;
+        //const rotation = this.rotation;
+
+        this.game.addBullet(
+            this.sourceGun,
+            this.shooter,
+            {
+                // move it a bit so it won't collide again with the same hitbox
+                position: vAdd(this.position, v(Math.sin(rotation), -Math.cos(rotation))),
+                rotation,
+                reflectionCount: this.reflectionCount + 1,
+                variance: this.rangeVariance,
+                clipDistance: this.clipDistance
+            }
+        );
+    }
+
+    penetrate(normal: Vector): void {
+        const rotation = this.rotation;
 
         this.game.addBullet(
             this.sourceGun,

@@ -10,7 +10,7 @@ export interface BulletOptions {
     readonly rotation: number
     readonly source: ReifiableDef<BulletDefinition>
     readonly sourceID: number
-    readonly reflectionCount?: number
+    reflectionCount?: number
     readonly variance?: number
     readonly clipDistance?: number
 }
@@ -42,7 +42,7 @@ export class BaseBullet {
     readonly maxDistance: number;
     readonly maxDistanceSquared: number;
 
-    readonly reflectionCount: number;
+    reflectionCount: number;
 
     readonly sourceID: number;
 

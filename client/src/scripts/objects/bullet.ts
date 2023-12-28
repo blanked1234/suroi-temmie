@@ -51,9 +51,12 @@ export class Bullet extends BaseBullet {
 
                 if (object instanceof Obstacle) {
                     if (
-                        (this.definition.penetration?.obstacles && !object.definition.impenetrable) ??
-                        object.definition.noCollisions
-                    ) continue;
+                        (this.definition.penetration?.obstacles && !object.definition.impenetrable && this.reflectionCount<3) ??object.definition.noCollisions
+                    ){
+                        this.reflectionCount=this.reflectionCount+3;
+                        continue;
+
+                    } 
                 }
                 if (this.definition.penetration?.players && object instanceof Player) continue;
 

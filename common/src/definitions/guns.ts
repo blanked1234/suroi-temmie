@@ -462,11 +462,11 @@ export const Guns: GunDefinition[] = [
         ammoSpawnAmount: 20,
         capacity: 5,
         reloadTime: 3.4,
-        fireDelay: 1400,
-        switchDelay: 900,
-        speedMultiplier: 0.92,
+        fireDelay: 1400,//2800
+        switchDelay: 900,//2700
+        speedMultiplier: 0.92,//0.455
         recoilMultiplier: 0.3,
-        recoilDuration: 1500,
+        recoilDuration: 1500,//3000
         fireMode: FireMode.Single,
         shotSpread: 0.5,
         moveSpread: 4,
@@ -487,7 +487,15 @@ export const Guns: GunDefinition[] = [
             damage: 129,
             obstacleMultiplier: 1,
             speed: 0.45,
+            
+            onHitExplosion: "usas_explosion",
+            goToMouse: true,
+            
             range: 300,
+            penetration: {
+                players: true,
+                obstacles: true
+            },
             tracer: {
                 width: 2.5,
                 length: 4
@@ -587,12 +595,12 @@ export const Guns: GunDefinition[] = [
         summonAirdrop: true,
         ammoType: "curadell",
         ammoSpawnAmount: 1,
-        fireDelay: 500,
+        fireDelay: 100,
         switchDelay: 0,
         speedMultiplier: 0.92,
         recoilMultiplier: 1,
         recoilDuration: 0,
-        fireMode: FireMode.Single,
+        fireMode: FireMode.Auto,
         shotSpread: 7,
         moveSpread: 14,
         length: 4.7,
@@ -610,7 +618,7 @@ export const Guns: GunDefinition[] = [
         },
         specialParticle: "radio_wave",
         noMuzzleFlash: true,
-        capacity: 1,
+        capacity: 100,
         reloadTime: 1.4,
         ballistics: {
             damage: 0,
@@ -1103,7 +1111,7 @@ export const Guns: GunDefinition[] = [
             damage: 8,
             obstacleMultiplier: 1,
             speed: 0.16,
-            range: 55,
+            range: 150,
             onHitExplosion: "usas_explosion",
             goToMouse: true,
             tracer: {

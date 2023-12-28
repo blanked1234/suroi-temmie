@@ -17,7 +17,7 @@ export const Config = {
     host: "127.0.0.1",
     port: 8000,
 
-    mapName: "main",
+    mapName: "arena",
 
     spawn: { mode: SpawnMode.Normal },
 
@@ -40,7 +40,7 @@ export const Config = {
         "123op": { password: "123op" },
         radians: { password: "radians" },
         limenade: { password: "limenade" }
-    }
+    },
 } satisfies ConfigType as ConfigType;
 
 export interface ConfigType {

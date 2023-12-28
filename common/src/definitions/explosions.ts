@@ -223,6 +223,36 @@ export const Explosions = new ObjectDefinitions<ExplosionDefinition>(
             },
             sound: "usas_explosion",
             decal: "explosion_decal"
+        },
+        {
+            idString: "ntw20_explosion",
+            name: "NTW-20",
+            damage: 70,
+            obstacleMultiplier: 2,
+            radius: {
+                min: 6,
+                max: 16
+            },
+            cameraShake: {
+                duration: 100,
+                intensity: 10
+            },
+            animation: {
+                duration: 1500,
+                tint: 0x6c1313,
+                scale: 0.8
+            },
+            shrapnelCount: 13,
+            ballistics: {
+                damage: 3,
+                obstacleMultiplier: 2,
+                speed: 0.06,
+                range: 10,
+                rangeVariance: 1,
+                shrapnel: true
+            },
+            sound: "usas_explosion",
+            decal: "explosion_decal"
         }
     ]
 );
